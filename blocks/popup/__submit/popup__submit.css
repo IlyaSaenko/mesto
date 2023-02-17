@@ -16,11 +16,11 @@
     cursor: pointer;
     }
   
-  .form__submit:hover {
+  .popup__submit:hover {
     opacity: 0.6;
   }
   
-  .form__submit:disabled {
+  .popup__submit:disabled {
     opacity: 0.2;
     color: #000;
     border: 1px solid #000;
@@ -28,7 +28,7 @@
   }
   
   @media screen and (max-width: 480px) {
-    .form__submit {
+    .popup__submit {
       max-width: 238px;
       height: 46px;
       margin-top: 20px;

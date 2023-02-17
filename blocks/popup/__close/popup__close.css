@@ -27,7 +27,6 @@
     .popup__close {
       width: 20px;
       height: 20px;
-      top: -36px;
       right: 0;
       background: transparent url(../../../images/close-icon-mobile.svg) center no-repeat;
     }

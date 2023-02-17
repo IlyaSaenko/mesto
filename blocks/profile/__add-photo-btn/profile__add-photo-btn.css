@@ -16,9 +16,10 @@
     opacity: 0.6;
   }
   
-  @media screen and (max-width: 838px) {
+  @media screen and (max-width: 855px) {
     .profile__add-photo-btn {
       width: 282px;
+      padding-top: 36px;
       background: url(../../../images/add-btn-mob.svg) center no-repeat;
     }
   }
