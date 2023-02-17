@@ -55,3 +55,9 @@
     column-gap: 0;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .elements {
+    padding-top: 36px;
+  }
+}

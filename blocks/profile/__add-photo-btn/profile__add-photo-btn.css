@@ -4,9 +4,8 @@
     margin: 0;
     padding: 0;
     align-self: center;
-    background: transparent url(../../../images/add-btn.svg) center no-repeat;
-    background-size: contain;
-    border: none;
+    background: transparent url(../../../images/prof-add-btn.svg) center no-repeat;
+    border: 1px solid #FFFFFF;
     border-radius: 2px;
     transition: 0.3s ease;
     cursor: pointer;

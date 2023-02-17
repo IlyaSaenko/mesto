@@ -7,12 +7,12 @@ let editButton = document.querySelector('.popup__edit-btn');
 let closeButton = document.querySelector('.popup__close');
 let popup = document.querySelector('.popup');
 let popupForm = document.querySelector('.popup__form');
-let popupName = document.querySelector('.popup__input_name');
-let popupSign = document.querySelector('.popup__input_sign');
+let inputName = document.querySelector('.popup__item_type_name');
+let inputSign = document.querySelector('.popup__item_type_sign');
 
 function openEditForm() {
-    popupName.value = profileName.textContent;
-    popupSign.value = profileSign.textContent;
+    inputName.value = profileName.textContent;
+    inputSign.value = profileSign.textContent;
     popup.classList.add('popup_opened');
 }
 
@@ -24,10 +24,12 @@ function saveProfile (evt) {
     
     evt.preventDefault();
 
-    profileName.textContent = popupName.value;
-    profileSign.textContent = popupSign.value;
-    popup.classList.remove('popup_opened');
+    profileName.textContent = inputName.value;
+    profileSign.textContent = inputSign.value;
+
+    closeEditForm();
 }
+
 
 profileEditBtn.addEventListener('click', openEditForm);
 closeButton.addEventListener('click', closeEditForm);
