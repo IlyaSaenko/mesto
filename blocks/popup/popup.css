@@ -1,12 +1,11 @@
 .popup {
-    height: 330px;
     background-color: rgba(0, 0, 0, 0.5);
-    left: 425px;
-    top: 195px;
-    right: 425px;
-    bottom: 195px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: flex;
-    position: absolute;
+    position: fixed;
     align-items: center;
     justify-content: center;
     visibility: hidden;
