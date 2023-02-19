@@ -16,6 +16,5 @@
   @media screen and (max-width: 480px) {
     .popup__item {
       max-width: 238px;
-      line-height: 32px;
     }
   }
