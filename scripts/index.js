@@ -5,7 +5,7 @@ const profileName = content.querySelector('.profile__name');
 const profileSign = content.querySelector('.profile__sign');
 const profileEditBtn = content.querySelector('.profile__edit-btn');
 const popupCloseButton = document.querySelector('.popup__close');
-const popup = document.querySelector('.popup');
+const popupEditProfile = document.querySelector('.popup');
 const popupForm = document.querySelector('.popup__form');
 const inputName = document.querySelector('.popup__item_type_name');
 const inputSign = document.querySelector('.popup__item_type_sign');
@@ -35,12 +35,12 @@ function openEditForm() {
   inputName.value = profileName.textContent;
   inputSign.value = profileSign.textContent;
 
-  openCard(popup);
+  openCard(popupEditProfile);
 }
 
 function closeEditForm() {
 
-  closePopup(popup);
+  closePopup(popupEditProfile);
 }
 
 function saveProfile(evt) {
