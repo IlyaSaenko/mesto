@@ -25,7 +25,7 @@
 @import url(../blocks/elements/__bottom/elements__bottom.css);
 @import url(../blocks/elements/__place/elements__place.css);
 @import url(../blocks/elements/__like/elements__like.css);
-@import url(../blocks/elements/__like/_active/elements__like_active.css);
+@import url(../blocks/elements/__like_active/elements__like_active.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);

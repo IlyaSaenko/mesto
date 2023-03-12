@@ -5,7 +5,7 @@ const profileName = content.querySelector('.profile__name');
 const profileSign = content.querySelector('.profile__sign');
 const profileEditBtn = content.querySelector('.profile__edit-btn');
 const editButton = document.querySelector('.popup__edit-btn');
-const closeButton = document.querySelector('.popup__close');
+const popupCloseButton = document.querySelector('.popup__close');
 const popup = document.querySelector('.popup');
 const popupForm = document.querySelector('.popup__form');
 const inputName = document.querySelector('.popup__item_type_name');
@@ -149,7 +149,7 @@ const handleDeleteCard = (event) => {
   event.target.closest(".elements__item").remove();
 };
 
-const renderElements = (cardData) => {
+const renderInitialCards = (cardData) => {
   console.log('good');
   elementsList.prepend(generateElementList(cardData));
 };
@@ -159,7 +159,7 @@ const submitAddNewCard = (event) => {
   event.preventDefault();
   // console.log(popupInputPlaceTitle);
   // console.log(popupInputPlaceLink);
-  renderElements({
+  renderInitialCards({
     name: popupInputPlaceTitle.value,
     link: popupInputPlaceLink.value,
   });
@@ -168,7 +168,7 @@ const submitAddNewCard = (event) => {
 };
 
 initialCards.forEach((cardData) => {
-  renderElements(cardData);
+  renderInitialCards(cardData);
 });
 
 
@@ -178,7 +178,7 @@ initialCards.forEach((cardData) => {
 
 //листнеры кнопки профиля
 profileEditBtn.addEventListener('click', openEditForm);
-closeButton.addEventListener('click', closeEditForm);
+popupCloseButton.addEventListener('click', closeEditForm);
 popupForm.addEventListener('submit', saveProfile);
 
 //листнеры попап создания новой карточки

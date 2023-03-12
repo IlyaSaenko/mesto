@@ -2,12 +2,13 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    background-image: url(../../../images/delete.svg);
+    background-image: url(../../../images/basket.svg);
     width: 18px;
     height: 19px;
     align-self: center;
     border: none;
     background-color: transparent;
+    background-repeat: no-repeat;
     cursor: pointer;
     transition: opacity .4s ease;
   }
