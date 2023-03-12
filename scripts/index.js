@@ -4,7 +4,6 @@ const content = document.querySelector('.content');
 const profileName = content.querySelector('.profile__name');
 const profileSign = content.querySelector('.profile__sign');
 const profileEditBtn = content.querySelector('.profile__edit-btn');
-const editButton = document.querySelector('.popup__edit-btn');
 const popupCloseButton = document.querySelector('.popup__close');
 const popup = document.querySelector('.popup');
 const popupForm = document.querySelector('.popup__form');
@@ -31,45 +30,17 @@ const popupInputPlaceLink = document.querySelector(".popup__item_place_link");
 const elementsTemplate = document.querySelector("#elements-add").content.querySelector(".elements__item");
 const elementsList = document.querySelector(".elements__list");
 
-
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-
 //функции редактирования профиля
 function openEditForm() {
   inputName.value = profileName.textContent;
   inputSign.value = profileSign.textContent;
-  popup.classList.add('popup_opened');
+
+  openCard(popup);
 }
 
 function closeEditForm() {
-  popup.classList.remove('popup_opened');
+
+  closePopup(popup);
 }
 
 function saveProfile(evt) {
@@ -80,9 +51,7 @@ function saveProfile(evt) {
   closeEditForm();
 }
 
-
 /*функции карточек*/
-
 // лайк карточке
 const likeLike = (event) => {
   event.target.classList.toggle("elements__like_active");
@@ -143,8 +112,6 @@ const generateElementList = (cardData) => {
   return templateElements;
 };
 
-
-
 const handleDeleteCard = (event) => {
   event.target.closest(".elements__item").remove();
 };
@@ -170,11 +137,6 @@ const submitAddNewCard = (event) => {
 initialCards.forEach((cardData) => {
   renderInitialCards(cardData);
 });
-
-
-// function testClick(){
-//   alert('зыкрыли карточку');
-// }
 
 //листнеры кнопки профиля
 profileEditBtn.addEventListener('click', openEditForm);
