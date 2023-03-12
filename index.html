@@ -28,7 +28,6 @@
             <button class="profile__add-photo-btn" type="button"></button>
         </section>
 
-
         <section class="elements">
             <ul class="elements__list">
             </ul>
@@ -54,15 +53,34 @@
         </div>
     </div>
 
+    <!-- попап добавления новой карточки -->
     <div class="popup popup_type_add-card">
         <div class="popup__container">
-            <button class="popup__close" type="button"></button>
+            <button class="popup__close popup__close_card" type="button" aria-label="Close"></button>
             <h2 class="popup__name">Новое место</h2>
-            <form class="popup__form" name="form">
-                <input class="popup__item popup__item_palce_name" name="place__name" placeholder="Название" type="text">
-                <input class="popup__item popup__item_place_url" name="place__sign" placeholder="Ссылка на картинку" type="text">
+            <form class="popup__form popup__formcard" name="formCard">
+                <input class="popup__item popup__item_palce_name" type="text" placeholder="Название">
+                <input class="popup__item popup__item_place_link" type="url" placeholder="Ссылка на картинку">
                 <button class="popup__submit" type="submit">Создать</button>
             </form>
+        </div>
+    </div>
+
+    <!-- <div class="popup popup_photo_view">
+        <div class="popup__container-view">
+            <button class="popup__close popup__close_photo" type="button" aria-label="Close"></button>
+            <img class="popup__image-card" src="#" alt="Полноразмерное фото">
+            <h2 class="popup__title-card"></h2>
+        </div>
+    </div> -->
+
+    <!-- Полноразмерная карточка -->
+    <div class="popup popup_photo_card">
+        <div class="popup__container-card">
+          <button class="popup__close popup__close_photo" type="button"  aria-label="Close">
+          </button>
+          <img class="popup__image-card" src="#" alt="Полноразмерное фото">
+          <h2 class="popup__title-card"></h2>
         </div>
     </div>
 
@@ -70,7 +88,7 @@
     <template id="elements-add">
         <li class="elements__item">
             <button class="elements__delete" type="button"></button>
-            <img class="elements__image" src="#" alt="Фото места">
+            <img class="elements__image" src="#" alt="Загруженная картинка">
             <div class="elements__bottom">
                 <h2 class="elements__place"></h2>
                 <button class="elements__like" type="button" aria-label="like"></button>
