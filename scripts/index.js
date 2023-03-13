@@ -4,9 +4,9 @@ const content = document.querySelector('.content');
 const profileName = content.querySelector('.profile__name');
 const profileSign = content.querySelector('.profile__sign');
 const profileEditBtn = content.querySelector('.profile__edit-btn');
-const popupCloseButton = document.querySelector('.popup__close');
+const buttonCloseEditProfilePopup = document.querySelector('.popup__close');
 const popupEditProfile = document.querySelector('.popup');
-const popupForm = document.querySelector('.popup__form');
+const formEditProfile = document.querySelector('.popup__form');
 const inputName = document.querySelector('.popup__item_type_name');
 const inputSign = document.querySelector('.popup__item_type_sign');
 
@@ -15,10 +15,10 @@ const popupCardPhoto = document.querySelector('.popup_photo_card');
 const popupImageCard = document.querySelector('.popup__image-card');
 const popupTitleCard = document.querySelector('.popup__title-card');
 const buttonClosePhoto = document.querySelector(".popup__close_photo");
-const buttonCloseCard = document.querySelector('.popup__close_card');
+const buttonCloseAddCardPopup = document.querySelector('.popup__close_card');
 
 //попап добавления карточки
-const popupEditForms = document.querySelector(".popup__formcard");
+const formAddCard = document.querySelector(".popup__formcard");
 const buttonOpenFormNewCard = document.querySelector(".profile__add-photo-btn");
 const popupButtonOpenFormNewCard = document.querySelector(".popup_type_add-card");
 const userNameInput = document.querySelector(".popup__item_type_name");
@@ -35,7 +35,7 @@ function openEditForm() {
   inputName.value = profileName.textContent;
   inputSign.value = profileSign.textContent;
 
-  openCard(popupEditProfile);
+  openPopup(popupEditProfile);
 }
 
 function closeEditForm() {
@@ -58,7 +58,7 @@ const likeLike = (event) => {
 };
 
 //раскрыть в полный размер
-function openCard(elem) {
+function openPopup(elem) {
   elem.classList.add("popup_opened");
 };
 
@@ -74,7 +74,7 @@ function closeCard() {
 
 //добавление новой карточки
 function openFormAddNewCard() {
-  openCard(popupButtonOpenFormNewCard);
+  openPopup(popupButtonOpenFormNewCard);
 };
 
 function closeFormAddNewCard() {
@@ -85,30 +85,30 @@ function closeFormAddNewCard() {
 const generateElementList = (cardData) => {
   const templateElements = elementsTemplate.cloneNode(true);
   const placeNewElements = templateElements.querySelector(".elements__place");
-  const likeElementsLike = templateElements.querySelector(".elements__like");
-  const elementsDelete = templateElements.querySelector(".elements__delete");
-  const elementsImgCard = templateElements.querySelector(".elements__image");
+  const elementLike = templateElements.querySelector(".elements__like");
+  const elementDeleteCard = templateElements.querySelector(".elements__delete");
+  const cardImage = templateElements.querySelector(".elements__image");
   const placeElements = templateElements.querySelector(".elements__place");
 
-  elementsImgCard.src = cardData.link;
+  cardImage.src = cardData.link;
   placeNewElements.textContent = cardData.name;
 
   //функция открытия фотографии
   function handleElementsCard() {
-    popupImageCard.src = elementsImgCard.src;
+    popupImageCard.src = cardImage.src;
     popupImageCard.alt = placeElements.textContent;
     popupTitleCard.textContent = placeElements.textContent;
-    openCard(popupCardPhoto);
+    openPopup(popupCardPhoto);
   }
 
   //листнеры карточек
-  elementsImgCard.addEventListener("click", handleElementsCard);
+  cardImage.addEventListener("click", handleElementsCard);
 
   //функция удаления фотографии
-  elementsDelete.addEventListener("click", handleDeleteCard);
+  elementDeleteCard.addEventListener("click", handleDeleteCard);
 
   //функция лайка фотографии
-  likeElementsLike.addEventListener("click", likeLike);
+  elementLike.addEventListener("click", likeLike);
   return templateElements;
 };
 
@@ -116,8 +116,7 @@ const handleDeleteCard = (event) => {
   event.target.closest(".elements__item").remove();
 };
 
-const renderInitialCards = (cardData) => {
-  console.log('good');
+const addCard = (cardData) => {
   elementsList.prepend(generateElementList(cardData));
 };
 
@@ -126,7 +125,7 @@ const submitAddNewCard = (event) => {
   event.preventDefault();
   // console.log(popupInputPlaceTitle);
   // console.log(popupInputPlaceLink);
-  renderInitialCards({
+  addCard({
     name: popupInputPlaceTitle.value,
     link: popupInputPlaceLink.value,
   });
@@ -135,20 +134,20 @@ const submitAddNewCard = (event) => {
 };
 
 initialCards.forEach((cardData) => {
-  renderInitialCards(cardData);
+  addCard(cardData);
 });
 
 //листнеры кнопки профиля
 profileEditBtn.addEventListener('click', openEditForm);
-popupCloseButton.addEventListener('click', closeEditForm);
-popupForm.addEventListener('submit', saveProfile);
+buttonCloseEditProfilePopup.addEventListener('click', closeEditForm);
+formEditProfile.addEventListener('submit', saveProfile);
 
 //листнеры попап создания новой карточки
 buttonOpenFormNewCard.addEventListener('click', openFormAddNewCard);
-buttonCloseCard.addEventListener('click', closeFormAddNewCard);
+buttonCloseAddCardPopup.addEventListener('click', closeFormAddNewCard);
 
 //добавить новую карточку
-popupEditForms.addEventListener('submit', submitAddNewCard);
+formAddCard.addEventListener('submit', submitAddNewCard);
 
 //закрытие полноразмерного фото карточки
 buttonClosePhoto.addEventListener('click', closeCard);
