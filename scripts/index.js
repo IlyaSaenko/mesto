@@ -30,6 +30,7 @@ const popupInputPlaceLink = document.querySelector(".popup__item_place_link");
 const elementsTemplate = document.querySelector("#elements-add").content.querySelector(".elements__item");
 const elementsList = document.querySelector(".elements__list");
 
+
 //функции редактирования профиля
 function openEditForm() {
   inputName.value = profileName.textContent;
@@ -101,7 +102,7 @@ const generateElementList = (cardData) => {
     openPopup(popupCardPhoto);
   }
 
-  //листнеры карточек
+  //лиснеры карточек
   cardImage.addEventListener("click", handleElementsCard);
 
   //функция удаления фотографии
@@ -137,12 +138,12 @@ initialCards.forEach((cardData) => {
   addCard(cardData);
 });
 
-//листнеры кнопки профиля
+//лиснеры кнопки профиля
 profileEditBtn.addEventListener('click', openEditForm);
 buttonCloseEditProfilePopup.addEventListener('click', closeEditForm);
 formEditProfile.addEventListener('submit', saveProfile);
 
-//листнеры попап создания новой карточки
+//лиснеры попап создания новой карточки
 buttonOpenFormNewCard.addEventListener('click', openFormAddNewCard);
 buttonCloseAddCardPopup.addEventListener('click', closeFormAddNewCard);
 
@@ -151,3 +152,40 @@ formAddCard.addEventListener('submit', submitAddNewCard);
 
 //закрытие полноразмерного фото карточки
 buttonClosePhoto.addEventListener('click', closeCard);
+
+
+
+
+
+//закрытие окна через click out zone
+// function setCloseByClickOverlayListener(el) {
+//   el.addEventListener("mousedown", runOverlayListener);
+// }
+// function runOverlayListener(event) {
+//   if (event.target.classList.contains("popup_opened")) {
+//     const openedPopup = document.querySelector(".popup_opened");
+//     closePopup(openedPopup);
+//   }
+// }
+
+// закрытие окна через Esc
+// function closeByEsc(evt) {
+//   if (evt.key === "Escape") {
+//     const openedPopup = document.querySelector(".popup_opened");
+//     closePopup(openedPopup);
+//   }
+// }
+
+//класс +/-
+// function openPopup(el) {
+//   el.classList.add("popup_opened");
+//   document.addEventListener("keydown", closeByEsc);
+//   // setCloseByClickButtonXListener(el);
+//   setCloseByClickOverlayListener(el);
+// }
+// function closePopup(el) {
+//   document.removeEventListener("keydown", closeByEsc);
+//   // el.removeEventListener("mousedown", runXListener);
+//   el.removeEventListener("mousedown", runOverlayListener);
+//   el.classList.remove("popup_opened");
+// }
