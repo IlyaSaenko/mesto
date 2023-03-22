@@ -154,38 +154,35 @@ formAddCard.addEventListener('submit', submitAddNewCard);
 buttonClosePhoto.addEventListener('click', closeCard);
 
 
+/*функции закрытия попапов*/
 
+//функция закрытия попапа кнопкой Esc
+function closeByEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+}
 
+//функция закрытия попапа кликом мыши вне элемента
+function CloseByClickOverlayPopup(el) {
+  el.addEventListener("mousedown", clickOverlayPopup);
+}
+function clickOverlayPopup(event) {
+  if (event.target.classList.contains("popup_opened")) {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+}
 
-//закрытие окна через click out zone
-// function setCloseByClickOverlayListener(el) {
-//   el.addEventListener("mousedown", runOverlayListener);
-// }
-// function runOverlayListener(event) {
-//   if (event.target.classList.contains("popup_opened")) {
-//     const openedPopup = document.querySelector(".popup_opened");
-//     closePopup(openedPopup);
-//   }
-// }
+function openPopup(el) {
+  el.classList.add("popup_opened");
+  document.addEventListener("keydown", closeByEsc);
+  CloseByClickOverlayPopup(el);
+}
 
-// закрытие окна через Esc
-// function closeByEsc(evt) {
-//   if (evt.key === "Escape") {
-//     const openedPopup = document.querySelector(".popup_opened");
-//     closePopup(openedPopup);
-//   }
-// }
-
-//класс +/-
-// function openPopup(el) {
-//   el.classList.add("popup_opened");
-//   document.addEventListener("keydown", closeByEsc);
-//   // setCloseByClickButtonXListener(el);
-//   setCloseByClickOverlayListener(el);
-// }
-// function closePopup(el) {
-//   document.removeEventListener("keydown", closeByEsc);
-//   // el.removeEventListener("mousedown", runXListener);
-//   el.removeEventListener("mousedown", runOverlayListener);
-//   el.classList.remove("popup_opened");
-// }
+function closePopup(el) {
+  document.removeEventListener("keydown", closeByEsc);
+  el.removeEventListener("mousedown", clickOverlayPopup);
+  el.classList.remove("popup_opened");
+}
