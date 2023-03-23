@@ -21,14 +21,13 @@ const buttonCloseAddCardPopup = document.querySelector('.popup__close_card');
 const formAddCard = document.querySelector(".popup__formcard");
 const buttonOpenFormNewCard = document.querySelector(".profile__add-photo-btn");
 const popupButtonOpenFormNewCard = document.querySelector(".popup_type_add-card");
-const userNameInput = document.querySelector(".popup__item_type_name");
 const jobInput = document.querySelector(".popup__item_type_sign");
 const popupEditForm = document.querySelector(".popup__form");
 const popupInputPlaceTitle = document.querySelector(".popup__item_palce_name");
 const popupInputPlaceLink = document.querySelector(".popup__item_place_link");
 
-const elementsTemplate = document.querySelector("#elements-add").content.querySelector(".elements__item");
-const elementsList = document.querySelector(".elements__list");
+const cardTemplate = document.querySelector("#elements-add").content.querySelector(".elements__item");
+const cardsContainer = document.querySelector(".elements__list");
 
 
 //функции редактирования профиля
@@ -54,7 +53,7 @@ function saveProfile(evt) {
 
 /*функции карточек*/
 // лайк карточке
-const likeLike = (event) => {
+const handleToggleLike = (event) => {
   event.target.classList.toggle("elements__like_active");
 };
 
@@ -83,13 +82,13 @@ function closeFormAddNewCard() {
 };
 
 //первоначальное наполнение карточками
-const generateElementList = (cardData) => {
-  const templateElements = elementsTemplate.cloneNode(true);
-  const placeNewElements = templateElements.querySelector(".elements__place");
-  const elementLike = templateElements.querySelector(".elements__like");
-  const elementDeleteCard = templateElements.querySelector(".elements__delete");
-  const cardImage = templateElements.querySelector(".elements__image");
-  const placeElements = templateElements.querySelector(".elements__place");
+const generateCard = (cardData) => {
+  const card = cardTemplate.cloneNode(true);
+  const placeNewElements = card.querySelector(".elements__place");
+  const elementLike = card.querySelector(".elements__like");
+  const elementDeleteCard = card.querySelector(".elements__delete");
+  const cardImage = card.querySelector(".elements__image");
+  const placeElements = card.querySelector(".elements__place");
 
   cardImage.src = cardData.link;
   placeNewElements.textContent = cardData.name;
@@ -109,8 +108,8 @@ const generateElementList = (cardData) => {
   elementDeleteCard.addEventListener("click", handleDeleteCard);
 
   //функция лайка фотографии
-  elementLike.addEventListener("click", likeLike);
-  return templateElements;
+  elementLike.addEventListener("click", handleToggleLike);
+  return card;
 };
 
 const handleDeleteCard = (event) => {
@@ -118,11 +117,11 @@ const handleDeleteCard = (event) => {
 };
 
 const addCard = (cardData) => {
-  elementsList.prepend(generateElementList(cardData));
+  cardsContainer.prepend(generateCard(cardData));
 };
 
 //подтверждение добавления карточки
-const submitAddNewCard = (event) => {
+const handleCardFormSubmit = (event) => {
   event.preventDefault();
   // console.log(popupInputPlaceTitle);
   // console.log(popupInputPlaceLink);
@@ -148,7 +147,7 @@ buttonOpenFormNewCard.addEventListener('click', openFormAddNewCard);
 buttonCloseAddCardPopup.addEventListener('click', closeFormAddNewCard);
 
 //добавить новую карточку
-formAddCard.addEventListener('submit', submitAddNewCard);
+formAddCard.addEventListener('submit', handleCardFormSubmit);
 
 //закрытие полноразмерного фото карточки
 buttonClosePhoto.addEventListener('click', closeCard);
@@ -165,10 +164,10 @@ function closeByEsc(evt) {
 }
 
 //функция закрытия попапа кликом мыши вне элемента
-function CloseByClickOverlayPopup(el) {
-  el.addEventListener("mousedown", clickOverlayPopup);
+function setClosePopupByOverlayEventListener(el) {
+  el.addEventListener("mousedown", handleClosePopupByOverlay);
 }
-function clickOverlayPopup(event) {
+function handleClosePopupByOverlay(event) {
   if (event.target.classList.contains("popup_opened")) {
     const openedPopup = document.querySelector(".popup_opened");
     closePopup(openedPopup);
@@ -178,11 +177,15 @@ function clickOverlayPopup(event) {
 function openPopup(el) {
   el.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEsc);
-  CloseByClickOverlayPopup(el);
+  setClosePopupByOverlayEventListener(el);
 }
 
 function closePopup(el) {
   document.removeEventListener("keydown", closeByEsc);
-  el.removeEventListener("mousedown", clickOverlayPopup);
+  el.removeEventListener("mousedown", handleClosePopupByOverlay);
   el.classList.remove("popup_opened");
 }
+
+formElement.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+});
