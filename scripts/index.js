@@ -18,7 +18,7 @@ const buttonClosePhoto = document.querySelector(".popup__close_photo");
 const buttonCloseAddCardPopup = document.querySelector('.popup__close_card');
 
 //попап добавления карточки
-const formAddCard = document.querySelector(".popup__formcard");
+const formAddCard = document.querySelector(".popup__form_card");
 const buttonOpenFormNewCard = document.querySelector(".profile__add-photo-btn");
 const popupButtonOpenFormNewCard = document.querySelector(".popup_type_add-card");
 const jobInput = document.querySelector(".popup__item_type_sign");
