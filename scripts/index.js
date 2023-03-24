@@ -68,9 +68,9 @@ const handleToggleLike = (event) => {
 // };
 
 //закрыть полный размер карточки
-function closeCard() {
-  closePopup(popupCardPhoto);
-};
+// function closeCard() {
+//   closePopup(popupCardPhoto);
+// };
 
 //добавление новой карточки
 function openFormAddNewCard() {
@@ -92,8 +92,8 @@ const generateCard = (cardData) => {
 
   cardImage.src = cardData.link;
   placeNewElements.textContent = cardData.name;
-  cardImage.alt = cardImage.textContent;
-  // cardImage.src = cardLink;
+  cardImage.alt = placeElements.textContent;
+  cardImage.textContent = placeElements.textContent;
 
   //функция открытия фотографии
   function handleElementsCard() {
@@ -125,8 +125,6 @@ const addCard = (cardData) => {
 //подтверждение добавления карточки
 const handleCardFormSubmit = (event) => {
   event.preventDefault();
-  // console.log(popupInputPlaceTitle);
-  // console.log(popupInputPlaceLink);
   addCard({
     name: popupInputPlaceTitle.value,
     link: popupInputPlaceLink.value,
@@ -172,8 +170,7 @@ function setClosePopupByOverlayEventListener(el) {
 }
 function handleClosePopupByOverlay(event) {
   if (event.target.classList.contains("popup_opened")) {
-    const openedPopup = document.querySelector(".popup_opened");
-    closePopup(openedPopup);
+    closePopup(event.target);
   }
 }
 
