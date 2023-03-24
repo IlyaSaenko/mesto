@@ -2,4 +2,5 @@
   display: flex;
   opacity: 1;
   visibility: visible;
+  transition: 0.5s;
 }
