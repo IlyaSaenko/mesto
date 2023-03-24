@@ -1,16 +1,16 @@
 const initialCards = [
   {
     name: 'Бразилия',
-    link: 'https://img2.akspic.ru/crops/5/0/2/6/5/156205/156205-braziliya_hristos_iskupitel-korkovado-novye_sem_chudes_sveta-dostoprimechatelnost-skulptura-1280x720.jpg'
+    link: 'https://images.unsplash.com/photo-1564659907532-6b5f98c8e70f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80'
   },
   {
     name: 'Индия',
-    link: 'https://img1.akspic.ru/crops/7/4/1/5/0/105147/105147-pamyatnik-puteshestvie-mavzolej-istoricheskoe_mesto-chudesa_mira-1920x1080.jpg'
+    link: 'https://images.unsplash.com/photo-1598324789736-4861f89564a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
   },
 
   {
     name: 'Египет',
-    link: 'https://img1.akspic.ru/crops/1/3/9/2/92931/92931-drevnyaya_istoriya-peyzash-hizhina-piramida-egipetskaya_piramida-1920x1080.jpg'
+    link: 'https://images.unsplash.com/photo-1568503446072-5c1c17d9b018?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
   },
   {
     name: 'Италия',
@@ -22,6 +22,6 @@ const initialCards = [
   },
   {
     name: 'Россия',
-    link: 'http://wallpapers-image.ru/1920x1080/city/wallpapers/city-images-1920x1080-12.jpg'
+    link: 'https://images.unsplash.com/photo-1594397394907-096148b9d1c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHNhaW50JTIwcGV0ZXJzYnVyZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
   }
 ];
