@@ -92,6 +92,8 @@ const generateCard = (cardData) => {
 
   cardImage.src = cardData.link;
   placeNewElements.textContent = cardData.name;
+  cardImage.alt = cardImage.textContent;
+  // cardImage.src = cardLink;
 
   //функция открытия фотографии
   function handleElementsCard() {
