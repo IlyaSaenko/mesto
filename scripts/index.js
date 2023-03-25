@@ -4,9 +4,9 @@ const content = document.querySelector('.content');
 const profileName = content.querySelector('.profile__name');
 const profileSign = content.querySelector('.profile__sign');
 const buttonEditProfile = content.querySelector('.profile__edit-btn');
-const buttonCloseEditProfilePopup = document.querySelector('.popup_close_profile');
+const buttonCloseEditProfilePopup = document.querySelector('.popup__close_profile');
 const popupEditProfile = document.querySelector('.popup_edit_profile');
-const formEditProfile = document.querySelector('.popup_form_profile');
+const formEditProfile = document.querySelector('.popup__form_profile');
 const inputName = document.querySelector('.popup__item_type_name');
 const inputSign = document.querySelector('.popup__item_type_sign');
 
