@@ -23,7 +23,7 @@ const buttonCloseAddCardPopup = document.querySelector('.popup__close_card');
 //попап добавления карточки
 const formAddCard = document.querySelector(".popup__form_card");
 const buttonOpenFormNewCard = document.querySelector(".profile__add-photo-btn");
-const popupButtonOpenFormNewCard = document.querySelector(".popup_type_add-card");
+const popupFormNewCard = document.querySelector(".popup_type_add-card");
 const popupInputPlaceTitle = document.querySelector(".popup__item_palce_name");
 const popupInputPlaceLink = document.querySelector(".popup__item_place_link");
 const cardTemplate = document.querySelector("#elements-add").content.querySelector(".elements__item");
@@ -36,28 +36,20 @@ function openEditForm() {
   inputName.value = profileName.textContent;
   inputSign.value = profileSign.textContent;
   profileValidator.resetSubmit();
+  profileValidator.resetValidation();
   openPopup(popupEditProfile);
 }
 
 function closeEditForm() {
   closePopup(popupEditProfile);
-  profileValidator.resetValidation();
 }
 
 function saveProfile(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileSign.textContent = inputSign.value;
-
   closeEditForm();
 }
-
-//функция деактивации кнопки
-// function addButtonInactive(form) {
-//   const popupButtonSave = form.querySelector(".popup__submit");
-//   popupButtonSave.classList.add("popup__submit_inactive");
-//   popupButtonSave.disabled = true;
-// }
 
 /*
  * Карточки
@@ -94,7 +86,7 @@ const handleCardFormSubmit = (event) => {
   }
   addCard(newCard)
   event.target.reset();
-  closePopup(popupButtonOpenFormNewCard);
+  closePopup(popupFormNewCard);
   cardAddValidator.disableSubmitButton();
   // addButtonInactive(formAddCard);
 };
@@ -105,25 +97,18 @@ const handleCardFormSubmit = (event) => {
 
 //открытие и закрытие попапа новой карточки
 function openFormAddNewCard() {
-  popupInputPlaceTitle.value = "";
-  popupInputPlaceLink.value = "";
-  openPopup(popupButtonOpenFormNewCard);
-
+  formAddCard.reset();
+  openPopup(popupFormNewCard);
+  cardAddValidator.disableSubmitButton();
   cardAddValidator.resetValidation();
 };
 
 function closeFormAddNewCard() {
-  closePopup(popupButtonOpenFormNewCard);
+  closePopup(popupFormNewCard);
 };
 
 //открытие попапа
 function openPopup(el) {
-  if (el === popupButtonOpenFormNewCard) {
-    cardAddValidator.disableSubmitButton();
-    //addButtonInactive(formAddCard);
-  } else if (el === popupEditProfile) {
-    profileValidator.resetValidation();
-  }
   el.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEsc);
   setClosePopupByOverlayEventListener(el);
@@ -185,5 +170,5 @@ buttonClosePhoto.addEventListener('click', closeCard);
 
 const profileValidator = new FormValidator(validationConfig, popupEditProfile);
 profileValidator.enableValidation();
-const cardAddValidator = new FormValidator(validationConfig, popupButtonOpenFormNewCard);
+const cardAddValidator = new FormValidator(validationConfig, popupFormNewCard);
 cardAddValidator.enableValidation();
