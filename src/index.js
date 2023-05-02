@@ -1,6 +1,7 @@
-import { initialCards, validationConfig } from "./constants.js";
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+import './pages/index.css';
+import { initialCards, validationConfig } from "./scripts/constants.js";
+import { Card } from "./scripts/Card.js";
+import { FormValidator } from "./scripts/FormValidator.js";
 
 const content = document.querySelector('.content');
 //попап редактирования профиля
