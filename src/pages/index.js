@@ -32,10 +32,13 @@ const popupUserInfo = new PopupWithForm(popupEditProfile, {
 popupUserInfo.setEventListeners();
 
 //открытиe редактирования профиля
+// const formEditProfile = document.querySelector('.popup__form_profile');
+
 buttonEditProfile.addEventListener("click", () => {
   popupUserInfo.setInputValues(userInfo.getUserInfo());
-  popupUserInfo.open();
   formValidators["form-profile"].resetValidation();
+  popupUserInfo.open();
+  // addButtonInactive(formEditProfile);
 });
 
 /**
@@ -69,6 +72,15 @@ const popupAddNewCard = new PopupWithForm(popupFormNewCard, {
 });
 popupAddNewCard.setEventListeners();
 
+//функция деактивирования кнопки
+// const formAddCard = document.querySelector(".popup__form_card");
+
+// function addButtonInactive(form) {
+//   const popupButtonSave = form.querySelector(".popup__submit");
+//   popupButtonSave.classList.add("popup__submit_inactive");
+//   popupButtonSave.disabled = true;
+// }
+
 /**
  * Полноразмерное фото карточки
  **/
@@ -80,6 +92,7 @@ popupImage.setEventListeners();
 buttonOpenFormNewCard.addEventListener("click", () => {
   formValidators["form-card"].resetValidation();
   popupAddNewCard.open();
+  // addButtonInactive(formAddCard);
 });
 
 /**
