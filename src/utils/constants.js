@@ -26,8 +26,10 @@ const cardTemplate = document.querySelector("#elements-add");
 const cardTemplateItem = document.querySelector("#elements-add").content.querySelector(".elements__item");
 const cardsContainer = document.querySelector(".elements__list");
 
-export { profileName, profileSign, cardTemplate, popupCardPhoto, cardsContainer,
-  popupEditProfile, buttonEditProfile, popupFormNewCard, buttonOpenFormNewCard }
+export {
+  cardTemplateItem, popupCardPhoto, cardsContainer,
+  popupEditProfile, buttonEditProfile, popupFormNewCard, buttonOpenFormNewCard
+}
 
 
 export const validationConfig = {
