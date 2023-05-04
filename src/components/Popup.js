@@ -5,6 +5,14 @@ export class Popup {
         this._handleCloseByEsc = this._handleCloseByEsc.bind(this);
     }
 
+    // constructor(popupSelector) {
+    //     // console.log(popupSelector);
+    //     // console.log(this._popup);
+    //     this._popup = document.querySelector(popupSelector);
+    //     this._buttonClose = this._popup.querySelector(".popup__close");
+    //     this._handleCloseByEsc = this._handleCloseByEsc.bind(this);
+    // }
+
     open() {
         this._popup.classList.add("popup_opened");
         document.addEventListener("keydown", this._handleCloseByEsc);
@@ -31,5 +39,4 @@ export class Popup {
             }
         });
     }
-
 }
