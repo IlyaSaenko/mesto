@@ -44,5 +44,4 @@ export class Card {
   _deleteCard() {
     this._element.remove();
   }
-
 }
