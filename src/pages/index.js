@@ -1,8 +1,8 @@
 import './index.css';
 import {
   initialCards, validationConfig,
-  cardTemplateItem, popupCardPhoto, cardsContainer, popupEditProfile, buttonEditProfile,
-  popupFormNewCard, buttonOpenFormNewCard
+  cardTemplateItem, cardsContainer, buttonEditProfile,
+  buttonOpenFormNewCard
 }
   from "../utils/constants.js";
 import { Card } from "../components/Card.js";
@@ -23,7 +23,7 @@ const userInfo = new UserInfo({
 });
 
 //попап профиля
-const popupUserInfo = new PopupWithForm(popupEditProfile, {
+const popupUserInfo = new PopupWithForm(".popup_edit_profile", {
   handleFormSubmit: (data) => {
     userInfo.setUserInfo(data);
 
@@ -65,7 +65,7 @@ const cardsList = new Section(
 cardsList.rendererItems(initialCards);
 
 //попап добавления новой карточки
-const popupAddNewCard = new PopupWithForm(popupFormNewCard, {
+const popupAddNewCard = new PopupWithForm(".popup_type_add-card", {
   handleFormSubmit: ({ place, link }) => {
     cardsList.setItem(createCard({ name: place, link: link }));
   },
@@ -86,7 +86,7 @@ popupAddNewCard.setEventListeners();
  **/
 
 //попап полноразмерного фото карточки
-const popupImage = new PopupWithImage(popupCardPhoto);
+const popupImage = new PopupWithImage(".popup_photo_card");
 popupImage.setEventListeners();
 
 buttonOpenFormNewCard.addEventListener("click", () => {
