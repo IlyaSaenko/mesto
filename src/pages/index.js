@@ -7,8 +7,9 @@ import { Section } from "../components/Section.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { FormValidator } from "../components/FormValidator.js";
+import { PopupSubmit } from "../components/PopupSubmit.js";
 import {
-  initialCards, 
+  initialCards,
   validationConfig,
   cardTemplateItem,
   cardsContainer,
@@ -26,7 +27,7 @@ const api = new Api(apiConfig);
 Promise.all([api.getUserInfoApi(), api.getInitialCards()])
   .then(([user, data]) => {
     currentUserId = user._id;
-    userInfo.setUserInfo({ name: user.name, description: user.description });
+    userInfo.setUserInfo({ name: user.name, description: user.about });
     userInfo.setUserAvatar(user);
     cardsList.rendererItems(data, currentUserId);
   })
@@ -70,6 +71,7 @@ const createCard = (data, user) => {
         .catch((error) => console.log(error));
     },
   });
+  //console.log(card);
 
   return card.generateCard();
 };
@@ -91,7 +93,9 @@ const popupFormDelete = new PopupSubmit(".popup_delete", {
     api
       .deleteCardApi(id)//todo заменить на cardId
       .then(() => {
+        console.log("катрочка для удаления " + card);
         card.deleteCard();
+        console.log(id, card);
         popupFormDelete.close();
       })
       .catch((error) => console.log("error delete card :" + error))
@@ -103,10 +107,10 @@ const popupFormDelete = new PopupSubmit(".popup_delete", {
 
 //попап профиля
 const popupUserInfo = new PopupWithForm(".popup_edit_profile", {
-  handlFormSubmit: (data) => {
+  handleFormSubmit: (data) => {
     return api
-      .setUserInfoApi(data)    
-      .then(() => userInfo.setUserInfo(data)) 
+      .setUserInfoApi(data)
+      .then(() => userInfo.setUserInfo(data))
       .catch((error) => console.log(error))
       .finally(() => popupAddNewCard.renderPreloader(false));
   },
@@ -122,7 +126,7 @@ buttonEditProfile.addEventListener("click", () => {
 
 //попап добавления новой карточки
 const popupAddNewCard = new PopupWithForm(".popup_type_add-card", {
-  handlFormSubmit: ({ place, link }) => {
+  handleFormSubmit: ({ place, link }) => {
     return api
       .addNewCards({ name: place, link: link })
       .then((newCard) => {
@@ -148,7 +152,7 @@ buttonOpenFormNewCard.addEventListener("click", () => {
 
 //попап редактировапния аватара
 const newAvatar = new PopupWithForm(".popup_avatar", {
-  handlFormSubmit: (data) => {
+  handleFormSubmit: (data) => {
     return api
       .setUserAvatar(data)
       .then((data) => {
@@ -189,13 +193,6 @@ enableValidation(validationConfig);
 formValidators['form-profile'].resetValidation();
 formValidators['form-card'].resetValidation();
 formValidators["form-avatar"].resetValidation();
-
-
-
-
-
-
-
 
 
 

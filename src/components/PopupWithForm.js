@@ -32,6 +32,7 @@ export class PopupWithForm extends Popup {
     this._form.addEventListener("submit", () => {
       const initialText = this._buttonSubmit.textContent;
       this._buttonSubmit.textContent = "Сохранение ...";
+      console.log(this)
       this._handleFormSubmit(this._getInputValues())
         .then(() => this.close())
         .finally(() => {

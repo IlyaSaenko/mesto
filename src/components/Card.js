@@ -1,13 +1,13 @@
 export class Card {
   constructor({
-    data, 
+    data,
     userId,
     templateSelector,
     handleCardClick,
     setLikeQty,
     setDislikeQty,
     handleDeleteCard
-    }) {
+  }) {
     this._templateSelector = templateSelector;
     this._data = data;
     this._name = data.name;
@@ -37,7 +37,7 @@ export class Card {
     this._image.setAttribute("src", `${this._link}`);
     this._image.setAttribute("alt", `${this._name}`);
     this._place.textContent = this._name;
-    this._elementCardLikeQty = this.element.querySelector(".elements__likes-quantity");
+    this._elementCardLikeQty = this._element.querySelector("div.elements__bottom span.elements__likes-quantity");
     this.renderLikes(this._data);
 
     // устанавливаю лайки карточкам:
@@ -48,7 +48,7 @@ export class Card {
       this._buttonDelete.remove();
     }
     this._setEventListeners();
-    return this.element;
+    return this._element;
   }
 
   //сеттим листнеры для элементов карточки
@@ -69,14 +69,21 @@ export class Card {
     }
 
     if (this.isMylikeCard()) {
-      this._buttonLike.classList.toggle("elements__like_active");
+      this._buttonLike.classList.add("elements__like_active");
     } else {
-      this._buttonLike.classList.toggle("elements__like_active");
+      this._buttonLike.classList.remove("elements__like_active");
     }
   }
 
+
+
   _toggleLike() {
-    return this.isMylikeCard() ? this.setDislikeQty(this.cardId) : this.setLikeQty(this.cardId);
+    if (this.isMylikeCard()) {
+      this.setDislikeQty(this.cardId);
+    } else {
+      this.setLikeQty(this.cardId);
+    }
+    //return this.isMylikeCard() ? this.setDislikeQty(this.cardId) : this.setLikeQty(this.cardId);
   }
 
   //мои ли лайки на карточке
@@ -86,7 +93,7 @@ export class Card {
 
   //удаление карточки
   deleteCard() {
-    this.element.remove();
-    this.element = null;
+    this._element.remove();
+    this._element = null;
   }
 }

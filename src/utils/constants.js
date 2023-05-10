@@ -71,7 +71,7 @@ export const initialCards = [
 export const apiConfig = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-65',
   headers:{
-    authorization: 'пока не выдали',
+    authorization: 'cee8554c-6d1f-4db9-968b-a545ca4ff2da',
     'Content-Type': 'application/json'
   }
 }
