@@ -1,5 +1,4 @@
 import { Popup } from "./Popup.js";
-
 export class PopupWithForm extends Popup {
   constructor(popupSelector, { handleFormSubmit }) {
     super(popupSelector);
@@ -53,8 +52,5 @@ export class PopupWithForm extends Popup {
       this.defaulText = this._buttonSubmit.textContent;
       this._buttonSubmit.textContent = displayText;
     }
-    // else {
-    //   this._buttonSubmit.textContent = this.defaulText;
-    // }
   }
 }

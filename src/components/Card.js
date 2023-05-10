@@ -4,8 +4,8 @@ export class Card {
     userId,
     templateSelector,
     handleCardClick,
-    setLikeQty,
-    setDislikeQty,
+    like,
+    unlike,
     handleDeleteCard
   }) {
     this._templateSelector = templateSelector;
@@ -16,8 +16,8 @@ export class Card {
     this._likes = data.likes;
     this._likeQty = data.likes.length;
     this.cardId = data._id;
-    this.setLikeQty = setLikeQty;
-    this.setDislikeQty = setDislikeQty;
+    this.like = like;
+    this.unlike = unlike;
     this._handleDeleteCard = handleDeleteCard;
     this._userIdOwner = data.owner._id;
     this.userId = userId;
@@ -75,15 +75,13 @@ export class Card {
     }
   }
 
-
-
   _toggleLike() {
     if (this.isMylikeCard()) {
-      this.setDislikeQty(this.cardId);
+      this.unlike(this.cardId);
     } else {
-      this.setLikeQty(this.cardId);
+      this.like(this.cardId);
     }
-    //return this.isMylikeCard() ? this.setDislikeQty(this.cardId) : this.setLikeQty(this.cardId);
+    return this.isMylikeCard() ? this.unlike(this.cardId) : this.like(this.cardId);
   }
 
   //мои ли лайки на карточке

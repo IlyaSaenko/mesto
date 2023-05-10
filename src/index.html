@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
-
+    
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="pages/index.css" />  -->
+    <link rel="icon" href='<%=require("./images/favicon-bus-32.png")%>'>
     <title>Mesto</title>
 </head>
 
@@ -83,45 +83,19 @@
         </div>
     </div>
 
-    <!-- темплэйт карточек -->
-    <!-- <template id="elements-add">
-        <li class="elements__item">
-            <button class="elements__delete" type="button"></button>
-            <img class="elements__image" src="#">
-            <div class="elements__bottom">
-                <h2 class="elements__place"></h2>
-                <button class="elements__like" type="button" aria-label="like"></button>
-                <span class="elements__likes-quantity"></span>
-            </div>
-        </li>
-    </template> -->
-
     <template id="elements-add">
         <li class="elements__item">
             <button class="elements__delete" type="button"></button>
             <img class="elements__image" src="#">
-            <h2 class="elements__place"></h2>
             <div class="elements__bottom">
-                <button class="elements__like" type="button" aria-label="like"></button>
-                <span class="elements__likes-quantity"></span>
+                <h3 class="elements__place"></h3>
+                <div class="elements__likes">
+                    <button class="elements__like" type="button" aria-label="like"></button>
+                    <span class="elements__likes-quantity"></span>
+                </div>
             </div>
         </li>
     </template>
-
-    <template class="element-template">
-        <li class="element">
-          <img class="element__img">
-          <div class="element__bottom-block">
-            <h3 class="element__title"></h3>
-            <div class="element__likes">
-              <button type="button" class="element__like-btn"></button>
-              <span class="element__likes-number"></span>
-            </div>
-            <button type="button" class="element__delete-btn"></button>
-          </div>
-        </li>
-      </template>
-
 
     <!-- попап изменения аватара профиля -->
     <div class="popup popup_avatar">
@@ -149,9 +123,11 @@
     </div>
     <!-- <script type="module" src="scripts/index.js"></script> -->
 </body>
-
 </html>
 
 <!-- 
-    Спасибо большое за проверку!
+    Добрый день!
+    Самая непростая ПР...
+    Вроде, всё получилось.
+    Заранее спасибо большое за проверку!
 -->
