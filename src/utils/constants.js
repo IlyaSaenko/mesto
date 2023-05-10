@@ -2,7 +2,7 @@ const content = document.querySelector('.content');
 //попап редактирования профиля
 const profileName = content.querySelector('.profile__name');
 const profileSign = content.querySelector('.profile__sign');
-const buttonAvatar = content.querySelector('.profile__avatar');
+const buttonAvatar = content.querySelector('.profile__avatar-btn');
 const buttonOpenFormNewCard = document.querySelector(".profile__add-photo-btn");
 const buttonEditProfile = content.querySelector('.profile__edit-btn');
 const buttonCloseEditProfilePopup = document.querySelector('.popup__close_profile');
@@ -71,7 +71,7 @@ export const initialCards = [
 export const apiConfig = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-65',
   headers:{
-    authorization: 'пока не выдали',
+    authorization: 'cee8554c-6d1f-4db9-968b-a545ca4ff2da',
     'Content-Type': 'application/json'
   }
 }
