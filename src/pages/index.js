@@ -11,7 +11,6 @@ import { PopupSubmit } from "../components/PopupSubmit.js";
 import {
   validationConfig,
   cardTemplateItem,
-  cardsContainer,
   buttonEditProfile,
   buttonOpenFormNewCard,
   buttonAvatar
@@ -22,7 +21,7 @@ import {
  **/
 
 let currentUserId;
-const api = new Api(apiConfig);
+const api = new Api(apiConfig.url, apiConfig.headers);
 Promise.all([api.getUserInfoApi(), api.getInitialCards()])
   .then(([user, data]) => {
     currentUserId = user._id;
@@ -45,8 +44,7 @@ const popupUserInfo = new PopupWithForm(".popup_edit_profile", {
     return api
       .setUserInfoApi(data)
       .then(() => userInfo.setUserInfo(data))
-      .catch((error) => console.log(error))
-      .finally(() => popupAddNewCard.renderPreloader(false));
+      .catch((error) => console.log(error));
   },
 });
 
@@ -100,7 +98,7 @@ const cardsList = new Section(
       cardsList.addItem(createCard(initialCards, userId));
     },
   },
-  cardsContainer
+  ".elements__list"
 );
 
 //попап добавления новой карточки
@@ -111,8 +109,7 @@ const popupAddNewCard = new PopupWithForm(".popup_type_add-card", {
       .then((newCard) => {
         cardsList.addItemPrepend(createCard(newCard, currentUserId));
       })
-      .catch((error) => console.log("add card :", error))
-      .finally(() => popupAddNewCard.renderPreloader(false));
+      .catch((error) => console.log("add card :", error));
   },
 });
 
@@ -185,6 +182,3 @@ const enableValidation = (validationConfig) => {
 };
 
 enableValidation(validationConfig);
-formValidators['form-profile'].resetValidation();
-formValidators['form-card'].resetValidation();
-formValidators["form-avatar"].resetValidation();
