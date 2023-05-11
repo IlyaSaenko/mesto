@@ -76,11 +76,6 @@ export class Card {
   }
 
   _toggleLike() {
-    if (this.isMylikeCard()) {
-      this.unlike(this.cardId);
-    } else {
-      this.like(this.cardId);
-    }
     return this.isMylikeCard() ? this.unlike(this.cardId) : this.like(this.cardId);
   }
 
